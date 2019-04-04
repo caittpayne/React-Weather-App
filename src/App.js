@@ -1,6 +1,7 @@
 import React from "react";
 import ZipCode from "./ZipCode";
-import api from "./api";
+import Weather from "./Weather";
+import axios from "axios";
 import "./App.css";
 
 class App extends React.Component {
@@ -9,21 +10,68 @@ class App extends React.Component {
 
     this.state = {
       location: "",
-      weather: ""
+      forecast: "",
+      hourly: "",
+      showWeather: "hide",
+      showZip: "show"
     };
   }
 
   setLocation = value => {
-    api.getLocation(value).then(data => {
-      this.setState({ location: data });
-    });
+    const zipUrl = `https://www.zipcodeapi.com/rest/${
+      process.env.REACT_APP_ZIP
+    }/info.json/${value}/degrees`;
+
+    return axios
+      .get(zipUrl)
+      .then(res => {
+        const gridUrl = `https://api.weather.gov/points/${res.data.lat}%2c${
+          res.data.lng
+        }`;
+
+        axios
+          .get(gridUrl, { headers: { accept: "application/geo+json" } })
+          .then(res => {
+            this.setState({ location: res.data.properties });
+            this.getForecast();
+          })
+          .catch(err => {
+            alert(err);
+          });
+      })
+      .catch(err => {
+        alert(err);
+      });
   };
 
-  getWeather = () => {};
+  getForecast = () => {
+    const x = this.state.location.gridX;
+    const y = this.state.location.gridY;
+    const cwa = this.state.location.cwa;
+    const url = `https://api.weather.gov/gridpoints/${cwa}/${x},${y}/forecast?units=us`;
+
+    axios
+      .get(url, { headers: { accept: "appliation/geo+json" } })
+      .then(res => {
+        this.setState({
+          forecast: res.data.properties.periods,
+          showWeather: "show",
+          showZip: "hide"
+        });
+      })
+      .catch(err => {
+        alert(err);
+      });
+  };
   render() {
     return (
       <div>
-        <ZipCode setLocation={this.setLocation} />
+        <ZipCode setLocation={this.setLocation} showZip={this.state.showZip} />
+        <Weather
+          forecast={this.state.forecast}
+          location={this.state.location}
+          showWeather={this.state.showWeather}
+        />
       </div>
     );
   }

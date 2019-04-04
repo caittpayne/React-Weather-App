@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import styles from "./styles.css";
+import styles from "../App.css";
 
 class ZipCode extends React.Component {
   handleSubmit = (value, { setSubmitting }) => {
@@ -11,7 +11,7 @@ class ZipCode extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.showZip}>
         <Formik
           initialValues={{ zipCode: "" }}
           onSubmit={this.handleSubmit}
