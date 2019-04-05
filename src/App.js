@@ -34,6 +34,7 @@ class App extends React.Component {
     return axios
       .get(zipUrl)
       .then(res => {
+          console.log(res.data);
         const gridUrl = `https://api.weather.gov/points/${res.data.lat}%2c${
           res.data.lng
         }`;

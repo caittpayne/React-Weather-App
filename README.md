@@ -18,7 +18,7 @@
 7. Navigate to app in [browser](http://localhost:3000)
 8. Enjoy!
 
-You can also check out the live site [here]("")!
+You can also check out the live site [here](https://caittpayne-react-weather-app.netlify.com/)!
 
 ## Built With: <a id="built"></a>
 
