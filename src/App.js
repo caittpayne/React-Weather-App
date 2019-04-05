@@ -2,7 +2,17 @@ import React from "react";
 import ZipCode from "./ZipCode";
 import Weather from "./Weather";
 import axios from "axios";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faLongArrowAltLeft,
+  faMapMarkerAlt,
+  faCloud
+} from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
+
+library.add(faLongArrowAltLeft);
+library.add(faMapMarkerAlt);
+library.add(faCloud);
 
 class App extends React.Component {
   constructor(props) {
@@ -63,6 +73,14 @@ class App extends React.Component {
         alert(err);
       });
   };
+
+  backToSearch = () => {
+    this.setState({
+      showZip: "show",
+      showWeather: "hide"
+    });
+  };
+
   render() {
     return (
       <div>
@@ -71,6 +89,7 @@ class App extends React.Component {
           forecast={this.state.forecast}
           location={this.state.location}
           showWeather={this.state.showWeather}
+          backToSearch={this.backToSearch}
         />
       </div>
     );
