@@ -1,6 +1,6 @@
 import React from "react";
-import ZipCode from "./ZipCode";
-import Weather from "./Weather";
+import ZipCode from "./components/ZipCode";
+import Weather from "./components/Weather";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -34,7 +34,6 @@ class App extends React.Component {
     return axios
       .get(zipUrl)
       .then(res => {
-          console.log(res.data);
         const gridUrl = `https://api.weather.gov/points/${res.data.lat}%2c${
           res.data.lng
         }`;

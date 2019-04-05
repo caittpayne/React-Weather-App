@@ -1,7 +1,7 @@
 import React from "react";
 import App from "../App";
-import ZipCode from "../ZipCode";
-import Weather from "../Weather";
+import ZipCode from "../components/ZipCode";
+import Weather from "../components/Weather";
 import { shallow } from "enzyme";
 
 describe("<App />", () => {
