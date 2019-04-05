@@ -37,6 +37,7 @@ class ZipCode extends React.Component {
                       <div>
                         <Field
                           type="text"
+                          id="field"
                           name="zipCode"
                           placeholder="Enter Zip Code"
                         />

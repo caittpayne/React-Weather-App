@@ -21,7 +21,6 @@ class App extends React.Component {
     this.state = {
       location: "",
       forecast: "",
-      hourly: "",
       showWeather: "hide",
       showZip: "show"
     };

@@ -15,17 +15,9 @@
   align-items: center;
   height: 100vh;
   width: 100%;
-  background: #fc5c7d; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #6a82fb,
-    #fc5c7d
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #6a82fb,
-    #fc5c7d
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #fdb813;
+  background: -webkit-linear-gradient(to top, #fedd8c, #fdb813);
+  background: linear-gradient(to top, #ffecc1, #fdb813);
 }
 
 /* Zip Code Area */
@@ -46,6 +38,7 @@ input {
   margin-bottom: 20px;
   text-align: center;
   outline: none;
+  text-transform: uppercase;
 }
 
 .button {
@@ -56,6 +49,7 @@ input {
   background-color: Transparent;
   padding: 10px 20px 10px 20px;
   width: 100%;
+  text-transform: uppercase;
 }
 
 .button:hover {
@@ -70,6 +64,7 @@ input {
   width: 100%;
   color: white;
 }
+
 /* Weather Area */
 
 .navigation {

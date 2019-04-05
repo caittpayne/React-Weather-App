@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Weather App
 
-## Available Scripts
+- <a href='#instructions'>Instructions</a>
+- <a href='#built'>Built With</a>
+- <a href='#tech'>Technology Choices</a>
+- <a href='#requirements'>Requirements</a>
 
-In the project directory, you can run:
+<hr>
 
-### `npm start`
+## Instructions:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Navigate to [repo](https://github.com/caittpayne/react-weather-app)
+2. Clone locally using `git clone https://github.com/caittpayne/react-weather-app`
+3. Install dependencies using `npm install`
+4. Update Zip Code API key
+5. Run tests using `npm test`
+6. Start your server using `npm start`
+7. Navigate to app in [browser](http://localhost:3000)
+8. Enjoy!
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+You can also check out the live site [here]("")!
 
-### `npm test`
+## Built With: <a id="built"></a>
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React.js
+- CSS
+- Jest & Enzyme
 
-### `npm run build`
+### Third Party APIs
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [National Weather Service]('https://www.weather.gov/documentation/services-web-api')
+-  [Zip Code API]('https://www.zipcodeapi.com/api')
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Technology Choices:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I chose to use React.js for this application and [Create React App](https://github.com/facebook/create-react-app) for the scaffolding. Instead of using a CSS framework, I opted to style it with just CSS (utilizing FlexBox). For the zip code form and validation, I used the [Formik](https://www.npmjs.com/package/formik) and [Yup](https://www.npmjs.com/package/yup) libraries.
 
-### `npm run eject`
+In starting this project, I wanted to include a test suite. Unlike my experience developing Node.js projects, I had never written tests for a React application. I chose to use [Jest](https://www.npmjs.com/package/jest) and [Enzyme](https://www.npmjs.com/package/enzyme). It's been a great experience to familiarize myself with these tools;
+however, I definitely need more practice. I'll use this project moving forward to practice writing more complex tests. I don't have a lot of code coverage right now!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Requirements:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Allow User to Enter a Zip Code
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I've added a form for users to enter their zip codes.
 
-## Learn More
+#### Validate Format of Zip Code
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Zip codes are validated to verify the input is exactly five numbers. If the input is invalid or is not entered, the user is alerted with a message.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Use Public Web Service to Retrive Weather Coresponding to Zip Code
 
-### Code Splitting
+Upon submitting the form, the functions `setLocation()` and `getForecast()` are called. These two functions pull data and populate `this.state`, so the weather component can use it to display the forecast.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Display Today's Weather 
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The current date's weather, as well as the next three days, are displayed for the user after submitting their zip code. The forecast is passed to this component and `map()` is used to iterate through the days and display the data.
